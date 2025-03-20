@@ -1187,6 +1187,12 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         animatedClosedPosition,
       ]
     );
+    function handleGetSnapPoints() {
+        return _providedSnapPoints as any[];
+    }
+    function handleGetCurrentSnapPoint() {
+        return animatedCurrentIndex.value;
+    };
     // biome-ignore lint/correctness/useExhaustiveDependencies(BottomSheet.name): used for debug only
     const handleForceClose = useCallback(
       function handleForceClose(
@@ -1349,6 +1355,8 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
       collapse: handleCollapse,
       close: handleClose,
       forceClose: handleForceClose,
+      getSnapPoints: handleGetSnapPoints,
+      getCurrentSnapPoint: handleGetCurrentSnapPoint,
     }));
     //#endregion
 
@@ -1447,6 +1455,8 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         collapse: handleCollapse,
         close: handleClose,
         forceClose: handleForceClose,
+        getSnapPoints: handleGetSnapPoints,
+        getCurrentSnapPoint: handleGetCurrentSnapPoint,
       }),
       [
         animatedIndex,

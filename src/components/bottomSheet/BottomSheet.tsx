@@ -718,7 +718,9 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         /**
          * fire `onAnimate` callback
          */
-        runOnJS(handleOnAnimate)(animatedNextPositionIndex.value);
+        if (animatedKeyboardState.value !== KEYBOARD_STATE.SHOWN) {
+            runOnJS(handleOnAnimate)(animatedNextPositionIndex.value);
+        }
 
         /**
          * start animation
@@ -1229,6 +1231,7 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
          */
         isForcedClosing.value = true;
 
+        runOnJS(handleOnAnimate)(-1);
         runOnUI(animateToPosition)(
           nextPosition,
           ANIMATION_SOURCE.USER,

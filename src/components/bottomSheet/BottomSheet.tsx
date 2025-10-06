@@ -1246,6 +1246,12 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         animatedAnimationState,
       ]
     );
+    function handleGetSnapPoints() {
+        return _providedSnapPoints as any[];
+    }
+    function handleGetCurrentSnapPoint() {
+        return animatedCurrentIndex.value;
+    };
     const handleForceClose = useCallback(
       function handleForceClose(
         animationConfigs?: WithSpringConfig | WithTimingConfig
@@ -1424,6 +1430,8 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
       collapse: handleCollapse,
       close: handleClose,
       forceClose: handleForceClose,
+      getSnapPoints: handleGetSnapPoints,
+      getCurrentSnapPoint: handleGetCurrentSnapPoint,
     }));
     //#endregion
 
@@ -1504,6 +1512,8 @@ const BottomSheetComponent = forwardRef<BottomSheet, BottomSheetProps>(
         collapse: handleCollapse,
         close: handleClose,
         forceClose: handleForceClose,
+        getSnapPoints: handleGetSnapPoints,
+        getCurrentSnapPoint: handleGetCurrentSnapPoint,
       }),
       [
         animatedIndex,

@@ -424,6 +424,8 @@ function BottomSheetModalComponent<T = any>(
     collapse: handleCollapse,
     close: handleClose,
     forceClose: handleForceClose,
+    getSnapPoints: () => { return []; },
+    getCurrentSnapPoint: () => { return 0 },
     // modal methods
     dismiss: handleDismiss,
     present: handlePresent,
